@@ -29,5 +29,9 @@ A table of data
 <td style="text-align: left;">Patrick</td>
 <td style="text-align: right;">17</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">Martina</td>
+<td style="text-align: right;">35</td>
+</tr>
 </tbody>
 </table>
