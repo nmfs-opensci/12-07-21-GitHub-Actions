@@ -33,5 +33,9 @@ A table of data
 <td style="text-align: left;">Martina</td>
 <td style="text-align: right;">35</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">Emilio</td>
+<td style="text-align: right;">75</td>
+</tr>
 </tbody>
 </table>
