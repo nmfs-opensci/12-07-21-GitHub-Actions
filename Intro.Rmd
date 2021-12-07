@@ -1,0 +1,85 @@
+---
+title: "Intro to GitHub Actions"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error=TRUE)
+```
+
+## GitHub Actions
+
+This helps you automate tasks when you push (say) changes to GitHub. The super common one is to check and R package and getting that nifty *Passing* badge. *Getting R CMD check working is one of the harder GitHub Actions. I wouldn't start with this!*
+
+![badge](https://github.com/RWorkflow-Workshop-2021/pkgdown-template/workflows/R-CMD-check/badge.svg)
+
+### Basic steps to set up a GitHub Action
+
+* Create the Action yaml file (instructions) in a folder `.github/workflows`. Each action gets its own file.
+* Push to your repo or create on GitHub directly
+
+That's it. GitHub will detect that Action and run it for you when the event to trigger the action happens. You specify what events trigger it in the your yaml file.
+
+### Let's see a simple example
+
+Let's start with a super simple example. We want to update a `Readme.md` from `Readme.Rmd` every time the `Readme.Rmd` file or the data used in that Rmd are updated. Our Rmd just has 2 lines.
+
+```
+a <- read.csv("test.csv")
+knitr::kable(a)
+```
+
+* Open up RStudio and make sure you can see hidden files. Go to 'More' in the file viewer tab and make sure 'Show hidden files' is checked
+* Create a folder called `.github`
+* In that folder, create a folder called `workflows`
+* In that we create our GitHub Action yaml file
+```
+name: Render README
+
+jobs:
+  render:
+    name: Render README
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      - name: Install packages
+        run: Rscript -e 'install.packages(c("rmarkdown", "knitr"))'
+      - name: Render README
+        run: Rscript -e 'rmarkdown::render("README.Rmd", output_format = "md_document")'
+      - name: Commit results
+        run: |
+          git commit README.md -m 'Re-build README.Rmd' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
+```
+
+### Getting started using `usethis`
+
+```
+usethis::use_github_actions()
+```
+Note what it does because you might need to change things.
+
+```
+usethis::use_github_actions_badge()
+```
+Set up the `R CMD check` badge.
+
+### Start adapting for your own purposes
+
+Look at examples:
+
+* Start here [r-lib/actions](https://github.com/r-lib/actions) *I often struggle with the r-lib actions. Theirs tend to be more complicated than I need.*
+* Here how I am using it:
+[VRData](https://github.com/nwfsc-math-bio/VRData/tree/master/.github/workflows) to run scripts on data that is pushed.
+* Read all about [Github actions with R](https://orchid00.github.io/actions_sandbox/)
+* [This blog helped me](https://fromthebottomoftheheap.net/2020/04/30/rendering-your-readme-with-github-actions/). It's a write-up of a colleague putting together his first GitHub Action.
+* [Here](https://github.com/UW-Upwelling-Project/imageryML/blob/main/.github/workflows/R-CMD-check.yaml) is an example of setting the environment so that `R CMD check` doesn't run `donttest{}` in examples.
+* Look in the [Fisheries Integrated Toolbox](https://github.com/nmfs-fish-tools) for the `.github/workflows` folder and look at examples of workflows.
+
+You can also use GitHub Actions is [many more ways](https://youtu.be/R8_veQiYBjI) to help you automate workflows.
+
