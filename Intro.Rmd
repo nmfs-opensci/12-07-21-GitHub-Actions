@@ -57,12 +57,35 @@ jobs:
           git push origin || echo "No changes to commit"
 ```
 
+### Let's see more examples
+
+* [Training webpage](https://github.com/nmfs-openscapes/Training)
+* [VRData pkgdown](https://github.com/nwfsc-math-bio/VRData/tree/master/.github/workflows)
+* [simple R CMD check](https://github.com/RVerse-Tutorials/TestPackage)
+* [Here](https://github.com/UW-Upwelling-Project/imageryML/blob/main/.github/workflows/R-CMD-check.yaml) is an example of setting the environment so that `R CMD check` doesn't run `donttest{}` in examples.
+
+
 ### Getting started using `usethis`
 
 ```
 usethis::use_github_actions()
 ```
 Note what it does because you might need to change things.
+```
+> usethis::use_github_actions()
+✓ Setting active project to '/Users/eli.holmes/Documents/GitHub/TestPackage'
+✓ Creating '.github/'
+✓ Adding '^\\.github$' to '.Rbuildignore'
+✓ Adding '*.html' to '.github/.gitignore'
+✓ Creating '.github/workflows/'
+✓ Writing '.github/workflows/R-CMD-check.yaml'
+• Learn more at <https://github.com/r-lib/actions/blob/master/examples/README.md>
+• Copy and paste the following lines into 'README.md':
+  <!-- badges: start -->
+  [![R-CMD-check](https://github.com/RVerse-Tutorials/TestPackage/workflows/R-CMD-check/badge.svg)](https://github.com/RVerse-Tutorials/TestPackage/actions)
+  <!-- badges: end -->
+  [Copied to clipboard]
+```
 
 ```
 usethis::use_github_actions_badge()
