@@ -1,3 +1,8 @@
+This Readme will be updated whenever `Readme.Rmd` or `test.csv` is
+changed. To see Eli’s presentation go
+[HERE](https://htmlpreview.github.io/?https://github.com/nmfs-openscapes/12-07-21-GitHub-Actions/blob/main/Intro.html)
+or to the `Intro.Rmd` file.
+
 A table of data
 ---------------
 
