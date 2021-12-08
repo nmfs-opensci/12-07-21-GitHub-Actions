@@ -3,6 +3,8 @@ changed. To see Eli’s presentation go
 [HERE](https://htmlpreview.github.io/?https://github.com/nmfs-openscapes/12-07-21-GitHub-Actions/blob/main/Intro.html)
 or to the `Intro.Rmd` file. [Click here to see the meeting
 notes](https://github.com/nmfs-openscapes/12-07-21-GitHub-Actions/blob/main/meeting_notes.md)
+[Link to the session video - NOAA access
+only](https://drive.google.com/file/d/1_oxKuRC-m4kzy57y3PJRfhnYIXXm5nkE/view?usp=sharing)
 
 A table of data
 ---------------
